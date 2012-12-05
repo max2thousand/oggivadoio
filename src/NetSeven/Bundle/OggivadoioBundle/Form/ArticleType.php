@@ -21,7 +21,7 @@ class ArticleType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'NetSeven\Bundle\OggivadoioBundle\Model\Article',
+            'data_class' => 'NetSeven\Bundle\OggivadoioBundle\Entity\Article',
         ));
     }
 }
