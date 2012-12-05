@@ -1,0 +1,6 @@
+<h1>Grazie per il tuo ordine :) Di seguito il riepilogo</h1>
+<ul>
+    {% for article in order.articles %}
+        <li> {{ article.name }}</li>
+    {% endfor %}
+</ul>
