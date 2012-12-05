@@ -1,0 +1,18 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block content %}
+    
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="flash-notice" style="background-color: red">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    
+    <h1>Lista utenti</h1>
+    <ul class="articles">
+        {% for user in users %}
+            <li>{{ user.username }},  {{ user.email }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -27,7 +27,7 @@ class Order
 
 
     /**
-     * ORM\ManyToMany(targetEntity="NetSeven\Bundle\OggivadoioBundle\Entity\Article", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="NetSeven\Bundle\OggivadoioBundle\Entity\Article", cascade={"persist"})
      */
     private $articles;
 
