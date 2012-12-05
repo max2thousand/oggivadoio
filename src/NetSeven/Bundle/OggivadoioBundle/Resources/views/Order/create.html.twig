@@ -1,6 +1,19 @@
-<h1>Grazie per il tuo ordine :) Di seguito il riepilogo</h1>
-<ul>
-    {% for article in order.articles %}
-        <li> {{ article.name }}</li>
-    {% endfor %}
-</ul>
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block content %}
+                
+    <h1>Grazie per il tuo ordine :) Di seguito il riepilogo</h1>
+    <ul class="articles">
+        {% for article in order.articles %}
+            <li>{{ article.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ path('order_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+        {{ form_errors(form) }}
+
+        {{ form_widget(form) }}
+
+        <input type="submit" name="submit" value="submit" />
+    </form>
+{% endblock %}
