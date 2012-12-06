@@ -27,7 +27,7 @@ class LoadNewsData extends AbstractFixture implements OrderedFixtureInterface, C
             $news = new News();
 
             $news->title = 'Titolo ' . $i;
-            $news->body = 'Corpo ' . $i;
+            $news->body = '<h1>Corpo</h1>';
             $manager->persist($news);
         }
         $manager->flush();

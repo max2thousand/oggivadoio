@@ -1,0 +1,9 @@
+<h1>Lista news</h1>
+<ul class="news">
+    {% for new in news %}
+    <li>
+        <h3>{{ new.title|upper }}</h3>
+        <div class="body">{{ new.body|slice(0,10)|lower|raw }}</div>
+    </li>
+    {% endfor %}
+</ul>

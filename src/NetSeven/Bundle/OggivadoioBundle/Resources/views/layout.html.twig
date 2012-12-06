@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Francesco sei tutti noi{% endblock %}</title>
+        <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/netsevenoggivadoio/css/main.css') }}" />
+    </head>
+    <body>
+            <div class="symfony-content">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            {% if code is defined %}
+                <h2>Code behind this page</h2>
+                <div class="symfony-content">{{ code|raw }}</div>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-{% extends 'AcmeDemoBundle::layout.html.twig' %}
+{% extends 'NetSevenOggivadoioBundle::layout.html.twig' %}
 
 {% block content %}
                 
@@ -16,4 +16,6 @@
 
         <input type="submit" name="submit" value="submit" />
     </form>
+    
+    {% render 'NetSevenOggivadoioBundle:News:box' with { 'n': 2 } %}
 {% endblock %}

@@ -41,5 +41,18 @@ class NewsController extends Controller {
 
         return array('news' => $news);
     }
+    
+    /**
+     * @Template()
+     */
+    public function boxAction($n = 5) {
+
+        $em = $this->getDoctrine()->getManager();
+        $news = $em->getRepository('NetSevenOggivadoioBundle:News')->getLatestNews($n);
+
+        return array('news' => $news);
+    }
+    
+    
 
 }
