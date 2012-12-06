@@ -14,16 +14,16 @@ class UtilityControllerTest extends WebTestCase {
 
         $buttonCrawlerNode = $crawler->selectButton('_submit');
 
-        $form = $buttonCrawlerNode->form(array('_username' => 'utente41','_password' => 'password'));
+        $form = $buttonCrawlerNode->form(array('_username' => 'utente1', '_password' => 'password'));
         $client->submit($form);
         $client->followRedirect();
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        
+
         $client->request('GET', '/profile');
         $crawler = $client->followRedirect();
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertEquals('profile.show.username: utente41', $crawler->filter('div.fos_user_user_show p')->eq(0)->text());
+        $this->assertEquals('profile.show.username: utente1', $crawler->filter('div.fos_user_user_show p')->eq(0)->text());
     }
 
 }
