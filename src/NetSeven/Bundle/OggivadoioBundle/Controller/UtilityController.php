@@ -25,10 +25,11 @@ class UtilityController extends Controller {
             $em = $this->getDoctrine()->getManager();
             try {
                 for ($i = $from; $i < $to; $i++) {
-                    $user = $userManager->createUser();
+                    $user = $userManager->createUser();                    
                     $user->setUsername('utente' . $i);
                     $user->setEmail('utente' . $i . '@example.com');
-                    $user->setPassword('utente' . $i . '@example.com');
+                    $user->setEnabled(true);
+                    $user->setPlainPassword('password');
                     $userManager->updateUser($user);
                     $em->persist($user);
                 }
