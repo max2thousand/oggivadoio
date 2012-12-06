@@ -35,7 +35,7 @@ class UtilityController extends Controller {
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('notice', 'Utenti creati correttamente!!');
             } catch (\Exception $e) {
-                $this->get('session')->getFlashBag()->add('warning', 'Non ho salvato i tuoi utenti!!');
+                $this->get('session')->getFlashBag()->add('warning', sprintf('Non posso salvare gli utenti con i parametri che mi hai passato [%s %s]!!', $from, $to));
             }
         } else {
             $this->get('session')->getFlashBag()->add('warning', 'Dammi dei parametri corretti per creare gli utenti!');
