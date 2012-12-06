@@ -7,6 +7,12 @@
         {{ flashMessage }}
     </div>
     {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice" style="background-color: green">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
     
     <h1>Lista utenti</h1>
     <ul class="articles">

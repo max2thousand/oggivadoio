@@ -20,25 +20,27 @@ class UtilityController extends Controller {
      */
     public function createUsersAction($from, $to) {
 
-        if ($from < 0) $from = 0;
-        if ($to < $from) $to = $from + 1;
-        
-        $userManager = $this->get('fos_user.user_manager');
-        $em = $this->getDoctrine()->getManager();
-        try {
-            for ($i = $from; $i < $to; $i++) {
-                $user = $userManager->createUser();
-                $user->setUsername('utente'.$i);
-                $user->setEmail('utente'.$i.'@example.com');
-                $user->setPassword('utente'.$i.'@example.com');
-                $userManager->updateUser($user);
-                $em->persist($user);
+        if (($from >= 0) && ($to > $from)) {
+            $userManager = $this->get('fos_user.user_manager');
+            $em = $this->getDoctrine()->getManager();
+            try {
+                for ($i = $from; $i < $to; $i++) {
+                    $user = $userManager->createUser();
+                    $user->setUsername('utente' . $i);
+                    $user->setEmail('utente' . $i . '@example.com');
+                    $user->setPassword('utente' . $i . '@example.com');
+                    $userManager->updateUser($user);
+                    $em->persist($user);
+                }
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('notice', 'Utenti creati correttamente!!');
+            } catch (\Exception $e) {
+                $this->get('session')->getFlashBag()->add('warning', 'Non ho salvato i tuoi utenti!!');
             }
-            $em->flush();
-        } catch (\Exception $e) {
-           $this->get('session')->getFlashBag()->add('warning', 'Non ho salvato i tuoi utenti!!');
+        } else {
+            $this->get('session')->getFlashBag()->add('warning', 'Dammi dei parametri corretti per creare gli utenti!');
         }
-        
+
         $users = $em->getRepository('NetSevenOggivadoioBundle:User')->findAll();
         return array("users" => $users);
     }
