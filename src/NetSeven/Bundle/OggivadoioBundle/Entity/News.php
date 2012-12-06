@@ -7,12 +7,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="NetSeven\Bundle\OggivadoioBundle\Entity\OrderRepository")
- * @ORM\Table(name="orderz")
+ * @ORM\Entity(repositoryClass="NetSeven\Bundle\OggivadoioBundle\Entity\NewsRepository")
+ * @ORM\Table(name="news")
  * @ORM\HasLifecycleCallbacks
  * 
  */
-class Order 
+class News 
 {
     
     /**
@@ -42,37 +42,32 @@ class Order
     
     /**
      *
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100)
      */
-    public $number;
+    public $title;
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="NetSeven\Bundle\OggivadoioBundle\Entity\Article", cascade={"persist"})
+     * @ORM\Column(type="text")
      */
-    private $articles;
+    public $body;
     
     
     
-    public function __construct() 
+    public function __construct($title = null, $body = null) 
     {
-        $this->articles = new ArrayCollection();
-        $this->number = rand(0, 999999);
+        $this->title = $title;
+        $this->body = $body;
     }
 
-    public function addArticle(Article $article) 
+    public function getCreated() 
     {
-        $this->articles->add($article);
+        return $this->created;
     }
     
-    public function getArticles()
+    public function getUpdated()
     {
-        return $this->articles;
+        return $this->updated;
     }
     
-    public function setArticles($articles)
-    {
-        $this->articles = $articles;
-    }
-
 }

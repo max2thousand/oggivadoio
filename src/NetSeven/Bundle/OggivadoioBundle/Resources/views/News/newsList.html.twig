@@ -1,0 +1,15 @@
+{% extends 'AcmeDemoBundle::layout.html.twig' %}
+
+{% block content %}
+
+<h1>Lista news</h1>
+<ul class="news">
+        {% for new in news %}
+        <li>
+            <h3>{{ new.title }}</h3>
+            <div class="body">{{ new.body }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
