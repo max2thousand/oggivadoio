@@ -30,7 +30,9 @@ class Order
      * @ORM\ManyToMany(targetEntity="NetSeven\Bundle\OggivadoioBundle\Entity\Article", cascade={"persist"})
      */
     private $articles;
-
+    
+    
+    
     public function __construct() 
     {
         $this->articles = new ArrayCollection();
